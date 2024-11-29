@@ -1,0 +1,38 @@
+  <!-- Main content -->
+  <main>
+    <h1>Relatório de Projetos</h1>
+    
+    <section class="tabelas">
+        <h2>Solicitações Recebidas</h2>
+        <table id="projetotable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tarefas.forEach(function(projeto) { %>
+                <tr>
+                    <td><%= projeto.nome_projetos %></td>
+                    <td><%= projeto.data_projetos %></td>
+                    <td><%= projeto.valor_projetos %></td>
+                    <td>
+                        <section class="boton">
+                            <button onclick="window.location='/aceitar?id=<%= projeto.id_projetos %>'" class="gosto">
+                                <i class='bx bx-check aceitar'></i>
+                            </button>
+                            <button onclick="window.location='/excluir?id=<%= projeto.id_projetos %>'" class="desgosto">
+                                <i class='bx bx-x recusar'></i>
+                            </button>
+                        </section>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </section>
+</main>
+</nav>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastrocliente.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Cadastro Cliente</title>
+    <style>
+         .error-message {
+            color: red;
+            display: none;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+        .valid, .valid-message {
+            color: green;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+        .invalid, .invalid-message, .invalid-criteria {
+            color: red;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+        .valid-criteria {
+            color: green;
+            font-size: 12px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="container">
+        <nav class="hero">
+            <a href="/cadastroinicial" class="material-symbols-outlined">
+                keyboard_backspace
+            </a>
+            <h2>Venha fazer negócios conosco!</h2>
+            <img src="/imagens/pexels-tomfisk-9893729.jpg" alt="">
+            <nav class="toggle_btn">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </nav>
+        </nav>
+
+        <main>
+            <form action="/cadastrocliente" method="POST" id="cadastroFormcliente">
+                <nav class="logo"></nav>
+                
+                <div class="input-field">
+                  <input type="text" name="nome_cliente" id="nome_cliente" placeholder="Nome Completo" required>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" name="cpf_cliente" id="cpf_cliente" placeholder="CPF" required maxlength="14">
+                  <span id="cpf-validity-message" class="error-message"></span>
+                </div>
+                
+                <div class="input-field">
+                  <input type="email" name="email_cliente" id="email_cliente" placeholder="E-mail" required>
+                </div>
+                
+                <div class="input-field">
+                    <input type="tel" id="contato_cliente" name="contato_cliente" placeholder="Contato (XX) XXXXX-XXXX" required oninput="mascaraTelefone(this)">
+                    <div id="telefone-error" class="error-message">Telefone inválido. Deve começar com 8 ou 9, ter 11 dígitos e não pode ter todos os números iguais.</div>
+                </div>
+                
+                <div class="input-field">
+                  <input type="text" id="cep_cliente" name="cep_cliente" placeholder="Cep XXXXX-XXX" required oninput="mascaraCep(this)">
+                </div>
+                
+                <div class="password-container">
+                  <input type="password" id="senha_cliente" name="senha_cliente" placeholder="Senha" onfocus="showMessage()" onblur="hideMessage()" oninput="validatePassword()" oncopy="return false;" onpaste="return false;">
+                  <nav id="message" class="invalid">A senha deve ter pelo menos 8 caracteres, uma letra maiúscula e um caractere especial.</nav>
+                </div>
+                
+                <div class="password-container">
+                  <input type="password" id="confirmarsenha_cliente" name="confirmarsenha_cliente" placeholder="Confirme sua senha" required oncopy="return false;" onpaste="return false;">
+                  <nav id="error-message" class="error-message">As senhas não coincidem.</nav>
+                </div>
+                
+                <div id="email-error" class="error-message">Este e-mail já está em uso.</div>
+                
+                <button type="submit">Criar Conta</button>
+              </form>
+              
+
+
+    <script>
+        // Validação em tempo real para CPF
+        document.getElementById('cpf_cliente').addEventListener('input', function () {
+            this.value = applyCPFMask(this.value);
+            const cpfInput = this.value.replace(/\D/g, '');
+            const cpfValidityMessage = document.getElementById('cpf-validity-message');
+
+            if (cpfInput.length > 11) {
+                this.value = cpfInput.substring(0, 11);
+            }
+
+            if (cpfInput.length === 11) {
+                if (validarCPF(cpfInput)) {
+                    cpfValidityMessage.textContent = 'CPF válido!';
+                    cpfValidityMessage.className = 'valid-message';
+                    cpfValidityMessage.style.display = 'block';
+                } else {
+                    cpfValidityMessage.textContent = 'CPF inválido. Verifique e tente novamente.';
+                    cpfValidityMessage.className = 'invalid-message';
+                    cpfValidityMessage.style.display = 'block';
+                }
+            } else {
+                cpfValidityMessage.style.display = 'none';
+            }
+        });
+
+           // Validação em tempo real para telefone
+       document.getElementById('contato_cliente').addEventListener('input', function() {
+            let telefoneInput = this.value.replace(/\D/g, '');
+            const telefoneError = document.getElementById('telefone-error');
+
+            // Limitar a 11 caracteres
+            if (telefoneInput.length > 11) {
+                telefoneInput = telefoneInput.substring(0, 11);
+                this.value = telefoneInput; // Atualiza o valor do input
+            }
+
+            if (telefoneInput.length >= 10) {
+                if (validarTelefone(telefoneInput)) {
+                    telefoneError.style.display = 'none';
+                } else {
+                    telefoneError.style.display = 'block';
+                }
+            } else {
+                telefoneError.style.display = 'none';
+            }
+
+            this.value = telefoneInput.replace(/(\d{2})(\d{5})(\d)/, '($1) $2-$3');
+        }); // Validação de telefone
+        function validarTelefone(telefone) {
+            // Checa se o telefone tem 10 ou 11 dígitos
+            if (telefone.length !== 10 && telefone.length !== 11) {
+                return false;
+            }
+
+            // Verifica se todos os dígitos são iguais
+            if (/^(\d)\1+$/.test(telefone)) {
+                return false;
+            }
+
+            // Verifica se o terceiro dígito é 8 ou 9 (considerando DDD)
+            if (telefone.length === 11 && telefone[2] !== '8' && telefone[2] !== '9') {
+                return false;
+            }
+
+            return true; // Se passar em todas as validações
+        }
+
+        // Verificação de e-mail
+        document.getElementById('email_cliente').addEventListener('input', function () {
+            const email = this.value;
+            const emailError = document.getElementById('email-error');
+
+            if (email) {
+                fetch(`/check-email?email=${encodeURIComponent(email)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.exists) {
+                            emailError.style.display = 'block';
+                        } else {
+                            emailError.style.display = 'none';
+                        }
+                    });
+            } else {
+                emailError.style.display = 'none';
+            }
+        });
+
+        // Submissão do formulário
+        document.getElementById('cadastroFormcliente').addEventListener('submit', function (event) {
+            const termosCheckbox = document.getElementById('termos');
+            const errorMessage = document.getElementById('error-message');
+            const cpfError = document.getElementById('cpf-validity-message');
+            const telefoneError = document.getElementById('telefone-error');
+            const senha = document.getElementById('senha_cliente').value;
+            const confSenha = document.getElementById('confimasenha_cliente').value;
+            const emailError = document.getElementById('email-error');
+            const cpfInput = document.getElementById('cpf_cliente').value.replace(/\D/g, '');
+            const telefoneInput = document.getElementById('contato_cliente').value.replace(/\D/g, '');
+
+            errorMessage.style.display = 'none';
+            emailError.style.display = 'none';
+            cpfError.style.display = 'none';
+            telefoneError.style.display = 'none';
+
+            if (!termosCheckbox.checked) {
+                alert('Você deve concordar com os termos para prosseguir.');
+                event.preventDefault();
+            } else if (!validarCPF(cpfInput)) {
+                cpfError.style.display = 'block';
+                event.preventDefault();
+            } else if (!validarTelefone(telefoneInput)) {
+                telefoneError.style.display = 'block';
+                event.preventDefault();
+            } else if (senha !== confSenha) {
+                errorMessage.style.display = 'block';
+                event.preventDefault();
+            } else {
+                fetch('/cadastrocliente', {
+                    method: 'POST',
+                    body: new FormData(this),
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            localStorage.setItem('cadastroSucesso', 'Cadastro realizado com sucesso!'); // Armazenar mensagem
+                            setTimeout(() => {
+                                window.location.href = '/'; // Redireciona para a home
+                            }, 2000);
+                        } else {
+                            alert('Erro ao cadastrar. Tente novamente.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao cadastrar:', error);
+                    });
+                event.preventDefault();
+            }
+        });
+
+        function validarCPF(cpf) {
+            cpf = cpf.replace(/\D/g, '');
+            if (cpf.length !== 11 || /^(.)\1{10}$/.test(cpf)) {
+                return false;
+            }
+
+            let soma = 0;
+            let resto;
+            for (let i = 1; i <= 9; i++) {
+                soma += parseInt(cpf[i - 1]) * (11 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            if (resto !== parseInt(cpf[9])) {
+                return false;
+            }
+
+            soma = 0;
+            for (let i = 1; i <= 10; i++) {
+                soma += parseInt(cpf[i - 1]) * (12 - i);
+            }
+            resto = (soma * 10) % 11;
+            if (resto === 10 || resto === 11) {
+                resto = 0;
+            }
+            return resto === parseInt(cpf[10]);
+        }
+
+        function mascaraTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length <= 2) {
+                input.value = value;
+            } else if (value.length <= 9) {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else {
+                input.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+            }
+        }
+
+        function mascaraCep(input) {
+    let cep = input.value;
+
+    // Remove caracteres não numéricos
+    cep = cep.replace(/\D/g, '');
+
+    // Formata o CEP no padrão XXXXX-XXX
+    if (cep.length > 5) {
+        cep = cep.slice(0, 5) + '-' + cep.slice(5, 8);
+    }
+
+    input.value = cep;
+
+    // Validação do formato do CEP
+    if (cep.length === 9) {
+        const cepPattern = /^[0-9]{5}-[0-9]{3}$/;
+        if (!cepPattern.test(cep)) {
+            alert('Formato de CEP inválido. Use o formato XXXXX-XXX.');
+            input.style.borderColor = 'red';
+        } else {
+            input.style.borderColor = 'green';
+        }
+    } else {
+        input.style.borderColor = '';
+    }
+}
+
+        function showMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+
+        function hideMessage() {
+            document.getElementById('message').style.display = 'none';
+        }
+        function validatePassword() {
+            const senha_cliente = document.getElementById('senha_cliente').value;
+            const message = document.getElementById('message');
+            const criteria = validatePasswordCriteria(senha_cliente);
+
+            let feedback = 'A senha deve ter: ';
+            let criteriaElements = [];
+
+            if (!criteria.length) {
+                criteriaElements.push('<span class="invalid-criteria">pelo menos 8 caracteres</span>');
+            } else {
+                criteriaElements.push('<span class="valid-criteria">pelo menos 8 caracteres</span>');
+            }
+
+            if (!criteria.upperCase) {
+                criteriaElements.push('<span class="invalid-criteria">uma letra maiúscula</span>');
+            } else {
+                criteriaElements.push('<span class="valid-criteria">uma letra maiúscula</span>');
+            }
+
+            if (!criteria.specialChar) {
+                criteriaElements.push('<span class="invalid-criteria">um caractere especial</span>');
+            } else {
+                criteriaElements.push('<span class="valid-criteria">um caractere especial</span>');
+            }
+
+            message.innerHTML = feedback + criteriaElements.join(', ');
+            message.className = criteria.length && criteria.upperCase && criteria.specialChar ? 'valid' : 'invalid';
+        }
+
+        function validatePasswordCriteria(senha_cliente) {
+            const lengthCriteria = senha_cliente.length >= 8;
+            const upperCaseCriteria = /[A-Z]/.test(senha_cliente);
+            const specialCharCriteria = /[!@#$%^&*(),.?":{}|<>]/.test(senha_cliente);
+            return {
+                length: lengthCriteria,
+                upperCase: upperCaseCriteria,
+                specialChar: specialCharCriteria,
+            };
+        }
+
+      
+
+        function applyCPFMask(value) {
+            return value
+                .replace(/\D/g, '')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d)/, '$1.$2')
+                .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        };
+  // Verificação das senhas durante o input
+  document.getElementById('confimasenha_cliente').addEventListener('input', function() {
+            const senha = document.getElementById('senha_cliente').value;
+            const confSenha = this.value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (confSenha && confSenha !== senha) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

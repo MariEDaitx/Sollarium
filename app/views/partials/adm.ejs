@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admprof.css">
+    <title>Painel adm</title>
+</head>
+
+<body>
+
+    <nav class="container">
+        <aside>
+            <nav class="toggle">
+                <nav class="logo">
+                    <span class="danger">Profissional</span>
+                    <h2>Sollari<span class="danger">um</span></h2>
+                </nav>
+                <nav class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </nav>
+            </nav>
+
+            <nav class="sidebar">
+                <a href="/adm">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Painel</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3></h3>
+                </a>
+                <a href="/dashboard">
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Orçamentos</h3>
+                    <span class="message-count">200</span>
+                </a>
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Análises</h3>
+                </a>
+                <a href="/feedback">
+                    <span class="material-icons-sharp">
+                        mail_outline
+                    </span>
+                    <h3>Feedbacks</h3>
+                    <span class="message-count">02</span>
+                </a>
+                
+                <a href="/commisao">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Comissões</h3>
+                    <span class="message-count">11</span>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Configurações</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>ADD novo ADM</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Desconectar</h3>
+                </a>
+            </nav>
+        </aside>
+        
+
+        <main>
+            <h1>Análises</h1>
+            
+            <nav class="analyse">
+                <nav class="sales">
+                    <nav class="status">
+                        <nav class="info">
+                            <h3>Ganhos</h3>
+                            <h1>$31,702</h1>
+                        </nav>
+                        <nav class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <nav class="percentage">
+                                <p>+90%</p>
+                            </nav>
+                        </nav>
+                    </nav>
+                </nav>
+                <nav class="visits">
+                    <nav class="status">
+                        <nav class="info">
+                            <h3>Feedbacks</h3>
+                            <h1>18,209</h1>
+                        </nav>
+                        
+                        <nav class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <nav class="percentage">
+                                <p>+12%</p>
+                            </nav>
+                        </nav>
+                    </nav>
+                </nav>
+                <nav class="searches">
+                    <nav class="status">
+                        <nav class="info">
+                            <h3>Orçamentos Semanais</h3>
+                            <h1>7,943</h1>
+                        </nav>
+                        <nav class="progresss">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <nav class="percentage">
+                                <p>-23%</p>
+                            </nav>
+                        </nav>
+                    </nav>
+                </nav>
+            </nav>
+            
+            <nav class="new-users">
+                <h2>Novos Clientes</h2>
+                <nav class="user-list">
+                    <nav class="user">
+                        <img src="images/jim.jpeg">
+                        <h2>Rhaissa Largos</h2>
+                        <p>Sabrina Silva</p>
+                    </nav>
+                    
+                    <nav class="user">
+                        <img src="images/scott.jpg">
+                        <h2>Maria Eduarda</h2>
+                        <p>Paulo Augusto</p>
+                    </nav>
+                    <nav class="user">
+                        <img src="images/plus.png">
+                        <h2>Mais</h2>
+                        <p>Mostrar mais</p>
+                    </nav>
+                </nav>
+            </nav>
+            
+            <nav class="recent-orders">
+                <h2>Últimas Atualizações</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ordens</th>
+                            <th>Pazo</th>
+                            <th>Responsável</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                
+            </nav>
+        </main>
+       
+        <nav class="right-section">
+            <nav class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <nav class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        
+                    </span>
+                    <span class="material-icons-sharp">
+                        
+                    </span>
+                </nav>
+
+                <nav class="profile">
+                    <nav class="info">
+                        <b>Dwight Schrute</b>
+                        <small class="text-muted">ADM</small>
+                    </nav>
+                    <nav class="profile-photo">
+                        <img src="images/dwight.jpg">
+                    </nav>
+                </nav>
+
+            </nav>
+            
+
+            <nav class="reminders">
+                <nav class="header">
+                    <h2>Reuniões</h2>
+                    
+                </nav>
+
+                <nav class="notification">
+                   
+                    <nav class="content">
+                        <nav class="info">
+                            <h3>Modificações na Equipe1</h3>
+                            <small class="text_muted">
+                                 04/11/24 - 08:15 AM - 10:00 AM
+                            </small>
+                        </nav>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </nav>
+                </nav>
+                
+
+                
+
+                <nav class="notification add-reminder">
+                    <nav>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reunião</h3>
+                    </nav>
+                </nav>
+                
+
+            </nav>
+
+        </nav>
+
+
+    </nav>
+
+    <script src="/js/orders.js"></script>
+    <script src="/js/adm.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Orçamento - Sollarium</title>
+    <link rel="stylesheet" href="/css/orcamento.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta name="description" content="Solicite orçamento para serviços de energia solar com os melhores profissionais da Sollarium.">
+    <meta name="keywords" content="energia solar, orçamento, profissionais, Sollarium, serviços, painel solar">
+    <meta name="author" content="Sollarium">
+</head>
+<body>
+    <header>
+        <nav class="logo"><a href="/">Sollarium</a></nav>
+    </header>
+    <nav class="grid">
+        <section class="texto">
+            <h1>Faça seu orcamento com a gente</h1>
+           <p>Nossa plataforma, oferece serviços como instalação de placa solar, limpeza, vistoria, consultoria e manutençã. <br>Procuraremos
+        para voce, o melhor profissional de acordo com sua região, atendemos todas as suas necessidades, pois para nós, sua satisfação é o que realemnte importa.</p>
+<section class="passos">
+    <h1>Passo a passo
+        <a>
+    </h1>
+</section>
+<ul style="display: flex; align-items: center; gap: 20px;">
+    <li style="display: flex; align-items: center;">
+        <h2 style="margin: 0;">1</h2>
+        <p style="margin: 0 10px 0 0;">Preencha o formulário com seus dados</p>
+        <span class="material-symbols-outlined" style="color: orange; font-size: 50px;margin-top: 32px;">edit_note</span>
+    </li>
+ 
+    <li style="display: flex; align-items: center;">
+        <h2 style="margin: 0;">2</h2>
+        <p style="margin: 0 -10px 0 0;">Envie o formulário.</p>
+        <span class="material-symbols-outlined" style="color: orange; font-size: 50px;margin-top: 60px;">check_circle</span>
+    </li>
+ 
+    <li style="display: flex; align-items: center;">
+        <h2 style="margin: 0;">3</h2>
+        <p style="margin: 0 10px 0 0;">Pronto! O profissional ideal para você estará a caminho.</p>
+        <span class="material-symbols-outlined" style="color: orange; font-size: 50px;">person</span>
+    </li>
+</ul>
+ 
+        </section>
+    <section id="contact" class="contact-section">
+            <form id="orcamento-form" method="post" action="/orcamento">
+                <h2>Solicite seu Orçamento</h2>
+                <nav class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="nome_cliente" placeholder="Nome completo" required>
+                </nav>
+ 
+                <nav class="form-group">
+                    <select name="id_servico" id="">
+                        <%
+                        listaServicos.forEach(function(servico){ %>
+                                 <option value="<%=servico.ID_SERVICO%>"> <%=servico.TITULO_SERVICO%></option>
+                               
+                         <% }); %>
+                    </select>
+            </nav>
+ 
+                <nav class="form-group">
+                    <label for="valor">Valor esperado:</label>
+                    <input type="text" id="valor_orcamento" name="valor_orcamento" placeholder="ex:300">
+                </nav>
+ 
+                <nav class="form-group">
+                    <label for="data">Dia e horário que o serviço deve ser realizado:</label>
+                    <input type="datetime-local" id="data_orcamento" name="data_orcamento" required>
+                </nav>
+ 
+                <button type="submit">Enviar Solicitação</button>
+                <div id="success-message" style="display: none; color: green; margin-top: 1rem;">
+                    Sua solicitação foi enviada com sucesso! Logo um profissional será encontrado para a realização do serviço.
+                </div>
+                <div id="error-message" style="display: none; color: red; margin-top: 1rem;">
+                    Ocorreu um erro ao enviar sua solicitação. Por favor, tente novamente.
+                </div>
+            </form>
+        </section>
+    </nav>
+ 
+</body>
+</html>

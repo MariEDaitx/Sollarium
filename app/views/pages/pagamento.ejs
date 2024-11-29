@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admprof.css">
+    <title>Painel de Pagamentos</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <span class="danger">PROFISSIONAL</span>
+                    <h2>Sollari<span class="danger">um</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Painel</h3>
+                </a>
+                <a href="/orcprof">
+                    <span class="material-icons-sharp">receipt_long</span>
+                    <h3>Orçamentos</h3>
+                </a>
+                <a href="/comissao" class="active">
+                    <span class="material-icons-sharp">monetization_on</span>
+                    <h3>Pagamentos</h3>
+                </a>
+                <a href="#logout">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Desconectar</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <h1>Gestão de Pagamentos</h1>
+            
+            <div class="payments-summary">
+                <div class="total-payments">
+                    <div class="info">
+                        <h3>Total de Pagamentos</h3>
+                        <h1>R$15,800</h1>
+                    </div>
+                    <div class="status">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>+25%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pending-payments">
+                    <div class="info">
+                        <h3>Pagamentos Pendentes</h3>
+                        <h1>R$2,500</h1>
+                    </div>
+                    <div class="status">
+                        <svg>
+                            <circle cx="38" cy="38" r="36"></circle>
+                        </svg>
+                        <div class="percentage">
+                            <p>-10%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-payments">
+                <h2>Últimos Pagamentos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Cliente</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/11/2024</td>
+                            <td>Michael Scott</td>
+                            <td>R$500</td>
+                            <td><span class="status-completed">Concluído</span></td>
+                        </tr>
+                        <tr>
+                            <td>10/11/2024</td>
+                            <td>Jim Halpert</td>
+                            <td>R$700</td>
+                            <td><span class="status-pending">Pendente</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="profile">
+                    <div class="info">
+                        <b>Dwight Schrute</b>
+                        <small class="text-muted">PROFISSIONAL</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="/imagens/perfil/imgperfil.png" alt="Foto do perfil">
+                    </div>
+                </div>
+            </div>
+
+            <div class="reminders">
+                <h2>Lembretes</h2>
+                <div class="notification">
+                    <div class="content">
+                        <div class="info">
+                            <h3>Pagamento Aprovado</h3>
+                            <small class="text-muted">08/11/24 - R$300 - Concluído</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="orders.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

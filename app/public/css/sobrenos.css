@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+:root{
+    --color-primary: #f5ba4d;
+    --color-danger: #f5ba4d;
+    --color-success: #f5ba4d;
+    --color-warning: #F7D060;
+    --color-white: #202528;
+    --color-info-dark: #edeffd;
+    --color-dark: #edeffd;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --color-dark-variant: #a3bdcc;
+    --color-background: #181a1e;
+ 
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 1.2rem;
+ 
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #edeffd;
+}
+
+
+
+header {
+    height: 70px;
+    width: 100%;
+    display: grid;
+    position: relative;
+    z-index: 100;
+}
+
+.navbar {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(5, 5, 5);
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar li{
+    list-style: none;
+}
+
+.navbar .links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+.navbar .links a {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+.navbar .toggle_btn {
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;    
+}
+
+.navbar .toggle_btn {
+    color: #ffffff07;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;    
+}
+
+.action_btn {
+    color: #fff;
+    padding: 0.3rem 2rem;
+    border: solid;
+    border-color: #eee;
+    border-width: 2.5px;
+    outline: none;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+    margin-right: 30px;
+}
+
+.action_btn:hover {
+    scale: 1.05;
+}
+
+.action_btn:active {
+    scale: 0.95;
+}
+
+.section {
+    width: 100%;
+    min-height: 73vh;
+    background-color: #000000;
+}
+
+.material-symbols-outlined {
+    align-self: flex-start;
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 30px;
+    margin-top: 50px;
+    }
+
+.container {
+    
+    width: 80%;
+    display: block;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.content-section {
+    float: left;
+    width: 55%;
+}
+
+.image-section {
+    float: right;
+    width: 40%;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.content-section .title {
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.content-section .content h3 {
+    margin-top: 20px;
+    color: #f5ba4d;
+}
+
+.content-section .content p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.content-section .content .button {
+    margin-top: 30px;
+}
+
+.content-section .content .button a {
+    background-color: #202528;
+    border-radius: 30px;
+    padding: 12px 40px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+}
+.text li{transition: background-color 0.3s, transform 0.3s;
+    font-family: sans-serif;
+    width: 500px;
+    height: 170px;
+    background-color: var(--color-white);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    position: relative;
+    left: 300px;
+}
+.text li:hover{
+    transform: scale(1.05); /* Efeito de crescimento */
+}
+.content-section .content .button a:hover {
+    background-color: #f5ba4d;
+    color: #fff;
+}
+
+.content-section .social {
+    margin-top: 40px;
+}
+
+.content-section .social i {
+    color: #ffac40;
+    font-size: 18px;
+    padding: 0px 10px;
+}
+
+.wrapper h1{
+    font-size: 20px;
+}
+
+.faq .accordion{
+    font-size: 14px;
+    height:40px ;
+    margin-bottom: 20px;
+}
+
+.content-section .social i:hover {
+    color: #535dee;
+}
+
+.pannel {
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px){
+    .container {
+        width: 80%;
+        display: block;
+        padding-top: 50px;
+    }
+
+    .content-section {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .image-section {
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+
+    .image-section img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 50%;
+    }
+
+    .content-section .title {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .content-section .content .button {
+        text-align: center;
+    }
+
+    .content-section .content .button a {
+        padding: 9px 30px;
+    }
+
+    .content-section .social {
+        text-align: center;
+    }
+}
+
+.wrapper {
+    max-width: 75%;
+    margin: auto;
+    background-color: #000000;
+  }
+  
+  .wrapper > p,
+  .wrapper > h1 {
+    margin: 1.5rem 0;
+    text-align: center;
+    color: #edeffd;
+  }
+
+  .wrapper p {
+    color: #ffac40;
+  }
+  
+  .wrapper > h1 {
+    letter-spacing: 3px;
+    color: #edeffd;
+  }
+  
+  .accordion {
+    background-color: #202528;
+    color: #edeffd;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 2rem 2.5rem;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .accordion i {
+    font-size: 1.6rem;
+  }
+  
+  
+  .accordion:hover {
+    background-color: #ffac40;
+  }
+  .pannel {
+    padding: 0 2rem 2.5rem 2rem;
+    background-color: #202528;
+    overflow: hidden;
+    background-color: #202528;
+    display: none;
+  }
+  .pannel p {
+    margin-top: 20px;
+    background-color: #202528;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #edeffd;
+  }
+  
+  .faq {
+    
+  border: none;
+    margin: 10px 0;
+  }
+  .faq.active {
+    border: none;
+    
+  }
+

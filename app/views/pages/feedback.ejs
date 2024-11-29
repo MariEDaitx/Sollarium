@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="/css/feedback.css">
+</head>
+<body>
+
+    <main>
+        <box-icon name='left-arrow-alt icone'><a href="voltar"></a></box-icon>
+        <form action="#" method="POST" class="formulario">
+            <fieldset>
+                <label for="data">Data do serviço:</label>
+                <input type="date" id="data" name="data" required>
+
+                <label for="email">Classifique o serviço:</label>
+                <select name="classificacao" id="classificacao" required>
+                    <option value="">Escolha uma opção</option>
+                    <option value="1">Muito Ruim</option>
+                    <option value="2">Ruim</option>
+                    <option value="3">Regular</option>
+                    <option value="4">Bom</option>
+                    <option value="5">Excelente</option>
+                </select>
+
+                <label for="comentario">Comentários:</label>
+                <textarea id="comentario" name="comentario" rows="4" placeholder="Compartilhe sua experiência e sugestões para melhorar" required></textarea>
+
+                <button type="submit">Enviar Feedback</button>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
